@@ -1,0 +1,73 @@
+<% layout("./layouts/boilerplate") %>
+<div class="container">
+  <br><br>
+  <h2 class="mb-4">Submit Your Claim</h2>
+
+  <form id="claimForm" class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="policyNumber" class="form-label">Policy Number</label>
+      <input type="text" name="policyNumber" id="policyNumber" class="form-control" required maxlength="10">
+    </div>
+
+    <div class="mb-3">
+      <label for="claimType" class="form-label">Claim Type</label>
+      <select name="claimType" id="claimType" class="form-control" required>
+        <option value="">Select Type</option>
+        <option value="Health">Health</option>
+        <option value="Property">Property</option>
+        <option value="Life">Life</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea name="address" id="address" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="claimDetails" class="form-label">Claim Details</label>
+      <textarea name="claimDetails" id="claimDetails" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="validateClaimBtn">Validate Claim</button>
+  </form>
+  <br><br><br><br><br>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script>
+  document.getElementById('validateClaimBtn').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('claimForm');
+    let valid = true;
+    let message = 'Your claim is invalid. Please check the details.';
+
+    const policyNumber = document.getElementById('policyNumber').value;
+    if (!policyNumber || policyNumber.length !== 10 || !/^[a-zA-Z0-9]+$/.test(policyNumber)) {
+      valid = false;
+    }
+
+    const claimType = document.getElementById('claimType').value;
+    if (!claimType) {
+      valid = false;
+    }
+
+    const address = document.getElementById('address').value;
+    if (!address.trim()) {
+      valid = false;
+    }
+
+    const claimDetails = document.getElementById('claimDetails').value;
+    if (!claimDetails.trim()) {
+      valid = false;
+    }
+
+    if (valid) {
+      message = 'Your claim is valid.';
+    }
+
+    alert(message);
+  });
+</script>

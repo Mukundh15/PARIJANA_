@@ -1,0 +1,122 @@
+<% layout("./layouts/boilerplate") %>
+
+<body>
+  <div class="show">
+    <div class="content">
+      <h2>Let's Find You</h2>
+      <h2>the BEST INSURANCE</h2>
+      <a href="#services" class="btn btn-primary mt-3" id="scrollBtn">Explore Services</a>
+    </div>    
+    <div class="slider text-center mt-4">
+      <div class="slider-track">
+        <img src="/assets/insurance1.jpg" class="slider-img active" alt="Insurance Image 1">
+        <img src="/assets/insurance2.png" class="slider-img" alt="Insurance Image 2">
+        <img src="/assets/insurance3.jpg" class="slider-img" alt="Insurance Image 3">
+        <img src="/assets/insurance4.jpg" class="slider-img" alt="Insurance Image 4">
+        <img src="/assets/insurance5.jpg" class="slider-img" alt="Insurance Image 5">
+      </div>
+    </div>         
+  </div>
+  <hr>
+  <div class="container py-4">
+    <h3 class="text-center mb-4">Enhancing Your Insurance Experience</h3>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col">
+        <div class="card h-100 position-relative">
+          <div class="card-body">
+            <h5 class="card-title">AI Chatbot Assistance</h5>
+            <p class="card-text">Get Policy guidance and claim assistance 24/7.</p>
+            <a href="/Parijana/chatbot" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 position-relative">
+          <div class="card-body">
+            <h5 class="card-title">Automated Form Filling</h5>
+            <p class="card-text">AI & OCR for accurate and quick form submission.</p>
+            <a href="/Parijana/formfilling" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 position-relative">
+          <div class="card-body">
+            <h5 class="card-title">Claim Validation</h5>
+            <p class="card-text">Instant claim validation and fraud detection.</p>
+            <a href="/Parijana/claimvalidation/validate" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 position-relative">
+          <div class="card-body">
+            <h5 class="card-title">Claim Status Tracking</h5>
+            <p class="card-text">Real-time updates on claim status and approval.</p>
+            <a href="/Parijana/claim-status" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 position-relative">
+          <div class="card-body">
+            <h5 class="card-title">Feedback & Improvement</h5>
+            <p class="card-text">We value your Experience! Please share your feedback to help us improve Parijana.</p>
+            <a href="/Parijana/feedback" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="insurance">
+    <h2>Why You Should Take Insurance</h2>
+    <div class="benefits">
+        <div class="benefit">
+            <h3>Financial Security</h3>
+            <p>Insurance provides financial protection for unexpected events, ensuring peace of mind for you and your family.</p>
+        </div>
+        <div class="benefit">
+            <h3>Health Coverage</h3>
+            <p>Health insurance helps cover medical expenses, reducing the burden of costly treatments and hospital bills.</p>
+        </div>
+        <div class="benefit">
+            <h3>Asset Protection</h3>
+            <p>Safeguard your valuable assets, including your home and vehicle, against damage or loss.</p>
+        </div>
+    </div>
+  </div>
+  <div class="brands">
+    <h2>OUR PARTNERS</h2>
+    <div class="brand-slider">
+      <div class="brand-track">
+          <img src="../assets/mar1.jpeg">
+          <img src="../assets/mar2.png">
+          <img src="../assets/mar3.png">
+          <img src="../assets/mar4.png">
+          <img src="../assets/mar5.png">
+          <img src="../assets/mar6.png">
+          <img src="../assets/mar7.jpeg">
+          <img src="../assets/mar8.png">
+          <img src="../assets/mar9.jpeg">
+          <img src="../assets/mar10.png">
+      </div>
+  </div>
+  </div>
+</body>
+<script>
+  const images=document.querySelectorAll('.slider-img');
+  let index=0;
+  setInterval(()=>{
+    images[index].classList.remove('active');
+    index =(index+1)%images.length;
+    images[index].classList.add('active');
+  }, 10000); 
+
+  document.getElementById("scrollBtn").addEventListener("click", function() {
+    window.scrollBy({
+      top: 300, 
+      behavior: 'smooth'
+    });
+  });
+</script>

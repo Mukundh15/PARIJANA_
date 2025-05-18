@@ -1,0 +1,40 @@
+<% layout("./layouts/boilerplate") %>
+<br><br><br>
+<div class="container my-5 mt-5">
+  <h2 class="mb-4">Contact Submissions</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>sno</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Mail to User</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contacts.forEach((data, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= data.name %></td>
+          <td><%= data.email %></td>
+          <td><%= data.subject %></td>
+          <td><%= data.message %></td>
+          <td>
+            <a href="mailto:<%= data.email %>">
+              <button class="btn btn-outline-dark btn-sm">Send</button>
+            </a>             
+          </td>
+          <td>
+            <form action="/Parijana/contact/adminlogin19/<%= data._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </form>            
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <br><br><br><br><br><br><br>
+</div>

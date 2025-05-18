@@ -1,0 +1,54 @@
+<% layout("./layouts/boilerplate") %>
+<body>
+  <div class="container py-5">
+    <div class="text-center mb-4">
+      <h1 class="display-5">Chat with Our AI</h1>
+      <p class="lead text-muted">Ask me anything, and I will assist you with the answer.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <form id="chatForm" class="border rounded-4 p-4 shadow-sm bg-light">
+          <div class="mb-3">
+            <label for="userMessage" class="form-label">Your Message:</label>
+            <textarea class="form-control" id="userMessage" name="message" rows="5" placeholder="Ask something..." required></textarea>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Send</button>
+          </div>
+        </form>
+        
+        <div class="mt-4">
+          <h4 class="text-center">Chatbot Response:</h4>
+          <div id="chatResponse" class="p-3 bg-light border rounded-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('chatForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const message = document.getElementById('userMessage').value.trim(); 
+      if (!message) {
+        alert('Please enter a message.');
+        return;
+      }
+      document.getElementById('chatResponse').innerText = 'Loading...';
+
+      try {
+        const response = await fetch('/Parijana/chatbot', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message }) 
+        });
+
+        const data = await response.json();
+        document.getElementById('chatResponse').innerText = data.response;
+      } catch (error) {
+        document.getElementById('chatResponse').innerText = 'Sorry, something went wrong!';
+      }
+    });
+  </script>
+</body>

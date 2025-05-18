@@ -1,0 +1,60 @@
+<% layout("./layouts/boilerplate") %>
+
+<body>
+  <br><br>
+  <div class="container py-5">
+    <div class="text-center mb-4">
+      <h1 class="display-5">Track Your Claim</h1>
+      <p class="lead text-muted">Enter your Claim ID to check the current status of your insurance claim.</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <form class="border rounded-4 p-4 shadow-sm bg-light" id="claimForm">
+          <div class="mb-3">
+            <label for="claimId" class="form-label">Claim ID:</label>
+            <input type="text" class="form-control" id="claimId" name="claimId" placeholder="Enter your Claim ID" required>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Track Status</button>
+          </div>
+        </form>
+
+        <div id="claimStatusResult" class="mt-4 text-center">
+        </div>
+      </div>
+    </div>
+    <br><br><br><br>
+  </div>
+
+  <script>
+    document.getElementById('claimForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const claimId = document.getElementById('claimId').value;
+
+      try {
+        const response = await fetch('/Parijana/claim-status', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ claimId })
+        });
+
+        const data = await response.json();
+        const resultDiv = document.getElementById('claimStatusResult');
+        
+        if (data.error) {
+          resultDiv.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+        } else {
+          resultDiv.innerHTML = `<div class="alert alert-success">
+            <h4>Claim Status: ${data.status}</h4>
+            <p>Last Updated: ${data.updatedAt}</p>
+          </div>`;
+        }
+      } catch (error) {
+        console.error('Error fetching claim status:', error);
+        document.getElementById('claimStatusResult').innerHTML = `<div class="alert alert-danger">Error fetching claim status. Please try again later.</div>`;
+      }
+    });
+  </script>
+</body>

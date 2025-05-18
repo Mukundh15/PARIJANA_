@@ -1,0 +1,38 @@
+<% layout("./layouts/boilerplate") %>
+<div class="container">
+  <h2 class="mb-4">Submit Your Claim for Customer Support</h2>
+  <% if (message) { %>
+    <div class="alert <%= messageType %>">
+      <%= message %>
+    </div>
+  <% } %>
+
+  <form action="/Parijana/customerSupport" method="POST">
+    <div class="mb-3">
+      <label for="policyNumber" class="form-label">Policy Number</label>
+      <input type="text" name="policyNumber" id="policyNumber" class="form-control" required maxlength="10">
+    </div>
+
+    <div class="mb-3">
+      <label for="claimType" class="form-label">Claim Type</label>
+      <select name="claimType" id="claimType" class="form-control" required>
+        <option value="">Select Type</option>
+        <option value="Health">Health</option>
+        <option value="Property">Property</option>
+        <option value="Life">Life</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea name="address" id="address" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="claimDetails" class="form-label">Claim Details</label>
+      <textarea name="claimDetails" id="claimDetails" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Validate Claim</button>
+  </form>
+</div>
