@@ -1,4 +1,4 @@
-# PARIJANA - AI-based Humanoid Agent for Insurance Claim Assistance
+# PARIJANA - AI-based Humanoid Agent for enhancing consumer experience in Insurance Claim
 
 Parijana is an AI-based humanoid agent designed to enhance consumer experience in **insurance claim management**. It provides a conversational interface that guides users through the claim filing process, auto-fills documents using OCR, and offers legal and procedural support.
 
